@@ -7,7 +7,8 @@ export class UsersController {
 
   @Get('/')
   async checkUsers(@Query('step') step: number) {
-    return this.userService.checkUsers(step);
+    const usersLength = await this.userService.checkUsers(step);
+    return { usersLength };
   }
 
   @Post('/')
