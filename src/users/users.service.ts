@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MoreThanOrEqual, Repository, LessThan, And } from 'typeorm';
+import { MoreThanOrEqual, Repository, LessThanOrEqual, And } from 'typeorm';
 import { User } from './entity/user.entity';
 import generateUserList from '../utils/generateUserList';
 
@@ -25,7 +25,7 @@ export class UsersService {
       // find truthy
       const users = await this.userRepository.find({
         where: {
-          id: And(MoreThanOrEqual(firstUserIndex), LessThan(lastUserIndex)),
+          id: And(MoreThanOrEqual(firstUserIndex), LessThanOrEqual(lastUserIndex)),
         },
       });
 
